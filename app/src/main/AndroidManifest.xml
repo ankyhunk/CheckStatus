@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
@@ -24,14 +26,17 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".BroadCastReceivers.CheckStatusBroadcastReceiver"  android:exported="true">
+        <receiver
+            android:name=".BroadCastReceivers.CheckStatusBroadcastReceiver"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
-                <action android:name="android.net.wifi.STATE_CHANGE"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".Services.WifiStatusCheckService" />
+        <service android:name=".Services.NetworkStatusCheckService" />
     </application>
 
 </manifest>

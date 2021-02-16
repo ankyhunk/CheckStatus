@@ -4,6 +4,8 @@ import android.R
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
@@ -13,10 +15,13 @@ import android.net.NetworkCapabilities
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.provider.Settings
+import androidx.annotation.RequiresPermission
 import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 
-
+/*
+    This file consists of Helper functions to do the work as its mentioned in the function name.
+ */
 const val PRIMARY_CHANNEL_ID_0 = "001"
 const val NOTIFICATION_ID = 1001
 
@@ -49,6 +54,27 @@ fun Fragment.setWiFiStatus(
 
 }
 
+@RequiresPermission(allOf = ["android.permission.BLUETOOTH", "android.permission.BLUETOOTH_ADMIN"])
+fun Fragment.setBluetoothStatus(status: Boolean, BLUETOOTH_REQUEST_CODE: Int) {
+    val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
+    if (status && bluetoothAdapter?.isEnabled == false) {
+        val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+        startActivityForResult(enableBtIntent, BLUETOOTH_REQUEST_CODE)
+    } else {
+        bluetoothAdapter?.disable()
+    }
+}
+
+@RequiresPermission("android.permission.BLUETOOTH")
+fun checkBluetoothStatus(context: Context?): Boolean {
+    val bluetoothManager =
+        context?.applicationContext?.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+    return when (bluetoothManager.adapter.isEnabled) {
+        true -> true
+        else -> false
+    }
+}
+
 fun checkNetworkStatus(context: Context?): Boolean {
     val connectivityManager =
         context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -63,7 +89,7 @@ fun checkNetworkStatus(context: Context?): Boolean {
     return false
 }
 
-//Helper Methods
+
 fun createNotificationChannel(context: Context?) {
     val mNotificationManager =
         context?.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
@@ -103,4 +129,11 @@ fun sendNotification(message: String, context: Context?) {
         .setOngoing(true)
         .setAutoCancel(false)
     mNotificationManager.notify(NOTIFICATION_ID, builder.build())
+}
+
+fun dismissNotifications(context: Context?) {
+    val mNotificationManager =
+        context!!.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+    mNotificationManager.cancelAll()
+
 }

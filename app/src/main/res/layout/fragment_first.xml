@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_16dp"
-        android:text="Bluetooth"
+        android:text="@string/bluetooth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_bluetooth_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_bluetooth_title" />
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_16dp"
         android:gravity="end|center"
-        android:text="Service"
+        android:text="@string/service"
         app:layout_constraintBottom_toTopOf="@id/tv_service_status_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -96,7 +96,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_16dp"
-        android:text="Switch ON to track the Wifi and Bluetooth Status."
+        android:text="@string/switch_on_to_track_the_wifi_and_bluetooth_status"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/switch_service" />

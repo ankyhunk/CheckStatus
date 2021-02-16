@@ -13,4 +13,6 @@
     <string name="bluetooth">Bluetooth</string>
     <string name="wifi_status">Wifi Status</string>
     <string name="bluetooth_status">Bluetooth Status</string>
+    <string name="switch_on_to_track_the_wifi_and_bluetooth_status">Switch ON to track the Wifi and Bluetooth Status.</string>
+    <string name="service">Service</string>
 </resources>
