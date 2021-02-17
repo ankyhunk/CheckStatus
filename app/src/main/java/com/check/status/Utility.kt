@@ -48,7 +48,7 @@ fun Fragment.setWiFiStatus(
     } else {
         when (status) {
             true -> wifiManager.isWifiEnabled = true
-            false -> wifiManager.isWifiEnabled = true
+            false -> wifiManager.isWifiEnabled = false
         }
     }
 

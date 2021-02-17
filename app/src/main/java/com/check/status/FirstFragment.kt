@@ -74,7 +74,7 @@ class FirstFragment : Fragment(), BroadCastReceiverCallbacks {
             //Set the Wifi Switch state
             isChecked = checkWiFiStatus(context)
             setOnClickListener {
-                setWiFiStatus(false, WIFI_REQUEST_CODE)
+                setWiFiStatus(this.isChecked, WIFI_REQUEST_CODE)
             }
         }
 
