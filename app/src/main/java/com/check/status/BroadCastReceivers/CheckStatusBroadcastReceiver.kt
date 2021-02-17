@@ -35,8 +35,8 @@ class CheckStatusBroadcastReceiver : BroadcastReceiver() {
 
         StringBuilder().apply {
             append(wifiStatus)
-            append("\n")
-            append("       ")
+
+            append("  ")
             append(bluetoothStatus)
             toString().also { message ->
                 Log.d(TAG, message)
