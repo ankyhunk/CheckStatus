@@ -1,5 +1,7 @@
 # CheckStatus
-This project consists of an Android Project build to check the status of Wifi and Bluetooth.
+This project consists of an Android Project build to check the status of Wifi and Bluetooth. 
+
+#### [Download the APK file from here](https://github.com/kavinraju/CheckStatus/raw/main/app/release/app-release.apk)
 
 
 ### Screenshots
